@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+
+
+
+
+
+<section class="section-conten padding-y" style="min-height:84vh">
+
+        {% if request.GET.command == 'verification' %}
+              <div class="contianer mx-auto alert alert-info" role="alert" style="max-width: 380px; margin-top:100px;">
+                  We Have sent You verification email(  {{request.GET.email}}  )
+              </div>
+              <br>
+              <br>
+              <a class="text-center" href="{% url 'login' %}">All ready veriffy?</a>
+        {% else %}
+
+    <!-- ============================ COMPONENT LOGIN   ================================= -->
+        <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
+          <div class="card-body">
+            {% include 'main/includes/alerts.html' %}
+            <br>
+          <h4 class="card-title mb-4">Sign in</h4>
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+              <div class="form-group">
+                 <input type="email" class="form-control" placeholder="Email Address" name="email" >
+              </div> <!-- form-group// -->
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password"  name="password">
+              </div> <!-- form-group// -->
+              
+              <div class="form-group">
+                  <a href="{% url 'forgotPassword' %}" class="float-right">Forgot password?</a> 
+               
+              </div> <!-- form-group form-check .// -->
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+              </div> <!-- form-group// -->    
+          </form>
+          </div> <!-- card-body.// -->
+        </div> <!-- card .// -->
+    
+         <p class="text-center mt-4">Don't have account? <a href="{% url 'register' %}">Sign up</a></p>
+         <br><br>
+    <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+    {% endif %}
+    
+    
+</section>
+
+
+{% endblock content %}

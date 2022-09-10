@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+
+<div class="row">
+    <div class="col-4">
+        <form action="" method="post" autocomplete="off">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary" >Login</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock content %}

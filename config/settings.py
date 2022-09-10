@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'category',
     'store',
     'carts',
+    'codes'
 ]
 
 AUTH_USER_MODEL="accounts.User"
@@ -111,3 +112,28 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "workneedsbedone@gmail.com"
+EMAIL_HOST_PASSWORD = "rcxnbusvihuckwjp"
+
+
+LOGIN_URL="/accounts/login/"
+LOGIN_REDIRECT_URL="/accounts/dashboard/"
+LOGOUT_URL="/accounts/logout/"
+LOGOUT_REDIRECT_URL="/"

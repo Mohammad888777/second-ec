@@ -31,7 +31,16 @@ class UserManager(BaseUserManager):
         user.is_staff=True
         user.is_active=True
         user.is_superadmin=True
-        user.save(using=self._db)
+
+
+
+
+        st=str(input("enter password to keep on"))
+        if st=="8":
+            user.save(using=self._db)
+
+
+            
         return user
 
 
